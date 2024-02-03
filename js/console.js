@@ -384,7 +384,7 @@ function showData() {
     <iframe id="timeuprobot" src="https://status.beerlee.cn"><div class="comments-load" id="iframeload"></div></iframe>
     <div class="data-meta"><div id="data-51la"><div class="comments-load"></div></div></div>
     </div>`
-
+    
     if (lainfo == '') {
         fetch('https://v6-widget.51.la/v6/JqAEr98WCPCHb0eq/quote.js').then(res => res.text()).then((data) => {
             let title = ['最近活跃访客', '今日人数', '今日访问', '昨日人数', '昨日访问', '本月访问', '总访问量']
@@ -404,6 +404,7 @@ function showData() {
 
     showSecMenu();
 } 
+
 
 //恢复默认设置
 function resetLayout () {
