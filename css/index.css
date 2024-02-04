@@ -7663,6 +7663,13 @@ a.article-title-new::after {
   font-size:20px!important;
   color:var(---theme-color);
 }
+
+
+@media screen and (max-width: 900px) {
+  .aside-content {
+       display:none        
+  }
+}
 /*博主信息栏加moji */
 .card-info-avatar .author-status-box {
   position: absolute;
@@ -10083,11 +10090,25 @@ i.bber-gotobb {
     animation: slide-in 0.6s 0s backwards;
   }
 }
-@media screen and (max-width: 768px) {
-  div#bbTimeList {
-    margin: 0 20px 15px;
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* nav*/
 #nav {
   top: 0 !important;
