@@ -333,32 +333,15 @@ function showBgSetting () { //切换背景页面
 
 
 //统计页51统计数据
-//统计页51统计数据
-var lainfo = ''
 function showData() {
-    // 链接替换即可，不需要后面的参数
     document.getElementById('console-secmenu').innerHTML = `<div id="data-content"">
-    <iframe id="timeuprobot" href="/charts"><div class="comments-load" id="iframeload"></div></iframe>
-    <div class="data-meta"><div id="data-51la"><div class="comments-load"></div></div></div>
-    </div>`
+   
+    <iframe id="timeuprobot" src="https://status.beerlee.cn"><div class="comments-load" id="iframeload"></div></iframe>
+    
+    <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/K3svWvEINq7CIBTm/quote.js?theme=#5DADE2,#333333,#4E4E4E,#333333,#FFFFFF,#1690FF,15&col=true&f=14&badge=icon_0&icon=center&display=1,0,1,1,0,1,1,1"></script>
 
-    if (lainfo == '') {
-        fetch('https://v6-widget.51.la/v6/JqAEr98WCPCHb0eq/quote.js').then(res => res.text()).then((data) => {
-            let title = ['最近活跃访客', '今日人数', '今日访问', '昨日人数', '昨日访问', '本月访问', '总访问量']
-            let num = data.match(/(<\/span><span>).*?(\/span><\/p>)/g);
-            num = num.map(el => {
-                let val = el.replace(/(<\/span><span>)/g, "");
-                let str = val.replace(/(<\/span><\/p>)/g, "");
-                return str;
-              });
-            let order = [1, 3, 2, 4, 5] // 新增  可排序，如果需要隐藏则删除对应数字即可。
-            // 示例：[1, 3, 2, 4, 5] 显示 ['今日人数', '昨日人数', '今日访问', '昨日访问', '本月访问']，不显示 最近活跃访客(0) 和 总访问量(6)
-            for (let i = 0; i < order.length; i++)  lainfo += '<div><span>' + title[order[i]] + '</span><span class="num-51la">' + num[order[i]] + '</span></div>'
-            document.getElementById('data-51la').innerHTML = lainfo + `<div style="text-align:center">由<a target="_blank" rel="nofollow noopener noreferrer" href='https://www.51.la/'>51LA</a>提供数据支持</div>`
-        })
-    }
-    else document.getElementById('data-51la').innerHTML = lainfo + `<div style="text-align:center">由<a target="_blank" rel="nofollow noopener noreferrer" href='https://www.51.la/'>51LA</a>提供数据支持</div>`
 
+    </div>`   
     showSecMenu();
 }
 
