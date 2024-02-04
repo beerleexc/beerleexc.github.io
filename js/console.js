@@ -338,7 +338,7 @@ var lainfo = ''
 function showData() {
     // 链接替换即可，不需要后面的参数
     document.getElementById('console-secmenu').innerHTML = `<div id="data-content"">
-    <iframe id="timeuprobot" src="https://status.beerlee.cn"><div class="comments-load" id="iframeload"></div></iframe>
+    <iframe id="timeuprobot" href="/charts"><div class="comments-load" id="iframeload"></div></iframe>
     <div class="data-meta"><div id="data-51la"><div class="comments-load"></div></div></div>
     </div>`
 
