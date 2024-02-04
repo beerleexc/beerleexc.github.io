@@ -313,51 +313,7 @@ function showBgSetting () { //切换背景页面
 
 
 
-//按钮id
-var layoutOption = [
-    ['showWidget', '显示侧边栏', 1, '显示信息栏', 0],  //[关键词，桌面端名，桌面端默认值，移动端名，移动端默认值] 1：true 0：false -1：隐藏
-    ['singleRow', '首页单栏布局', 0, '', -1],
-    ['navFixed', '固定导航栏', 1, '固定导航栏', 1],
-    ['HDCover', '高清封面（消耗流量）', 0, '', -1],
-    ['bgBlur', '背景虚化（消耗性能）', 1, '背景虚化（消耗性能）', 1],
-    ['useSakura', '落樱特效', 1, '落樱特效', 0],
-    ['clickEffect', '单击特效', 1, '', -1]
-]
-isNavFixed = true
-//布局页
-function showLayoutSetting () {
-    if (window.innerWidth > 768) {
-        let a = `<div id="layout-content"><button id="resetLayout" onclick="resetLayout()"><i class="fa-solid fa-arrows-rotate"></i></button>
-        <div><ul>`
-        layoutOption.forEach((option) => {
-            if (option[2] != -1) a += `<li><span>${option[1]}</span><label class="switch"><input id="${option[0]}" onclick="layoutSwitch('${option[0]}',1)" type="checkbox" ${option[2] == 1 ? 'checked' : ''}><div class="slider round"></div></label></li>`
-        })
-        a += `</ul></div></div>`
-        document.getElementById('console-secmenu').innerHTML = a
-    }
-    else {
-        let a = `<div id="layout-content"><button id="resetLayout" onclick="resetLayout()"><i class="fa-solid fa-arrows-rotate"></i></button>
-        <div><ul>`
-        layoutOption.forEach((option) => {
-            if (option[4] != -1) a += `<li><span>${option[3]}</span><label class="switch"><input id="${option[0]}" onclick="layoutSwitch('${option[0]}',1)" type="checkbox" ${option[4] == 1 ? 'checked' : ''}><div class="slider round"></div></label></li>`
-        })
-        a += `</ul></div></div>`
-        document.getElementById('console-secmenu').innerHTML = a
-    }
 
-    //设置按钮初始状态
-    layoutOption.forEach(function (option) {
-        try {
-            if ((window.innerWidth > 768 && option[2] != -1) || (window.innerWidth <= 768 && option[4] != -1)) {
-                let data = loadData(option[0], 1440 * 30)
-                if (typeof (data) == "boolean") document.getElementById(option[0]).checked = data;
-                else localStorage.removeItem(option[0]);
-            }
-        } catch (error) { localStorage.removeItem(option[0]); console.log('error') }
-    })
-
-    showSecMenu();
-} 
 
 
 
@@ -377,6 +333,7 @@ function showLayoutSetting () {
 
 
 //统计页51统计数据
+//统计页51统计数据
 var lainfo = ''
 function showData() {
     // 链接替换即可，不需要后面的参数
@@ -384,7 +341,7 @@ function showData() {
     <iframe id="timeuprobot" src="https://status.beerlee.cn"><div class="comments-load" id="iframeload"></div></iframe>
     <div class="data-meta"><div id="data-51la"><div class="comments-load"></div></div></div>
     </div>`
-    
+
     if (lainfo == '') {
         fetch('https://v6-widget.51.la/v6/JqAEr98WCPCHb0eq/quote.js').then(res => res.text()).then((data) => {
             let title = ['最近活跃访客', '今日人数', '今日访问', '昨日人数', '昨日访问', '本月访问', '总访问量']
@@ -403,191 +360,6 @@ function showData() {
     else document.getElementById('data-51la').innerHTML = lainfo + `<div style="text-align:center">由<a target="_blank" rel="nofollow noopener noreferrer" href='https://www.51.la/'>51LA</a>提供数据支持</div>`
 
     showSecMenu();
-} 
-
-
-//恢复默认设置
-function resetLayout () {
-    layoutOption.forEach(option => {
-        if (window.innerWidth > 768) {
-            if (option[2] == 0) {
-                document.getElementById(option[0]).checked = false;
-                layoutSwitch(option[0], false);
-            }
-            else if (option[2] == 1) {
-                document.getElementById(option[0]).checked = true;
-                layoutSwitch(option[0], true)
-            }
-        }
-        else {
-            if (option[4] == 0) {
-                document.getElementById(option[0]).checked = false;
-                layoutSwitch(option[0], false);
-            }
-            else if (option[4] == 1) {
-                document.getElementById(option[0]).checked = true;
-                layoutSwitch(option[0], true)
-            }
-        }
-    })
 }
-
-//布局页各项设置
-function layoutSwitch(name, flag) {
-    let switchOn = (typeof (flag) == "boolean") ? flag : document.getElementById(name).checked;
-    switch (name) {
-        case 'showWidget':
-            if (switchOn) {
-                if (document.getElementById('aside-content'))document.getElementById('aside-content').classList.remove('show-widget-asidehide')
-                if (document.getElementById('post'))document.getElementById('post').classList.remove('show-widget-posts')
-                if (document.getElementById('recent-posts')) document.getElementById('recent-posts').classList.remove('show-widget-posts')
-                if (document.getElementsByClassName('post_cover')) Array.from(document.getElementsByClassName('post_cover')).forEach(function (item) { item.classList.remove('show-widget-postcard') })
-            }
-            else {
-                if (document.getElementById('aside-content')) document.getElementById('aside-content').classList.add('show-widget-asidehide')
-                if (document.getElementById('post')) document.getElementById('post').classList.add('show-widget-posts')
-                if (document.getElementById('recent-posts')) document.getElementById('recent-posts').classList.add('show-widget-posts')
-                if (document.getElementsByClassName('post_cover')) Array.from(document.getElementsByClassName('post_cover')).forEach(function (item) { item.classList.add('show-widget-postcard') })
-            }
-            break;
-        case 'singleRow':
-            if (switchOn && document.getElementsByClassName('recent-post-item')) {
-                Array.from(document.getElementsByClassName('recent-post-item')).forEach(function (item) { item.classList.add('single-row') })
-                if (typeof (flag) == "number" && document.getElementById('HDCover').checked) layoutSwitch('HDCover',true)
-            }
-            else if (!switchOn && document.getElementsByClassName('recent-post-item')) Array.from(document.getElementsByClassName('recent-post-item')).forEach(function (item) { item.classList.remove('single-row') })
-            break;
-        case 'navFixed':
-            if (switchOn) isNavFixed = true;
-            else {
-                if (document.getElementsByClassName('menus_items')[1].classList.contains('page-name-invisible')) {
-                    document.getElementsByClassName('menus_items')[1].classList.remove('page-name-invisible')
-                    document.getElementsByClassName('menus_items')[1].classList.add('page-name-visible')
-                    document.getElementById('page-name').classList.remove('page-name-visible')
-                    document.getElementById('page-name').classList.add('page-name-invisible')
-                }
-                isNavFixed = false;
-            }
-            break;
-        case 'HDCover':
-            if (switchOn && (loadData('singleRow', 1440 * 30) == true || document.getElementById('singleRow'))) Array.from(document.getElementsByClassName('post_bg')).forEach(function (img) { img.setAttribute("src", `${img.getAttribute('src').split('!cover')[0]}`) })
-            break;
-        case 'bgBlur':
-            if (switchOn) {
-                if (document.documentElement.getAttribute('data-theme') === 'dark') document.documentElement.style.setProperty('--ichika-card-bg', ichikaCardBgDark)
-                else document.documentElement.style.setProperty('--ichika-card-bg', ichikaBlurBg)
-                document.documentElement.style.setProperty('--ichika-bgblur', ichikaBlur)
-            }
-            else {
-                if (document.documentElement.getAttribute('data-theme') === 'dark') document.documentElement.style.setProperty('--ichika-card-bg', ichikaCardBgDark)
-                else document.documentElement.style.setProperty('--ichika-card-bg', ichikaNoBlurBg)
-                document.documentElement.style.setProperty('--ichika-bgblur', ichikaNoBlur)
-            }
-            break;
-        case 'useSakura':
-            stopp(switchOn)
-            break;
-        case 'clickEffect':
-            if (switchOn && document.getElementsByClassName('fireworks')[0]) document.getElementsByClassName('fireworks')[0].setAttribute('style', 'display:block')
-            else if (!switchOn && document.getElementsByClassName('fireworks')[0]) document.getElementsByClassName('fireworks')[0].setAttribute('style', 'display:none')
-            break;
-        default:
-            break;
-    }
-    saveData(name, switchOn)
-}
-
-//初始化布局设置
-layoutOption.forEach(function (option){
-    try {
-        let data = loadData(option[0], 1440 * 30)
-        if (typeof (data) == "boolean") layoutSwitch(option[0], data)
-        else localStorage.removeItem(option)[0];
-    } catch (error) { localStorage.removeItem(option[0])}
-})
-
-// 存数据
-// name：命名 data：数据
-function saveData(name, data) {
-  localStorage.setItem(name, JSON.stringify({ 'time': Date.now(), 'data': data }))
-}
-
-// 取数据
-// name：命名 time：过期时长,单位分钟,如传入30,即加载数据时如果超出30分钟返回0,否则返回数据
-function loadData(name, time) {
-  let d = JSON.parse(localStorage.getItem(name));
-  // 过期或有错误返回 0 否则返回数据
-  if (d) {
-      let t = Date.now() - d.time
-      if (t < (time * 60 * 1000) && t > -1) return d.data;
-  }
-  return 0;
-}
-
-// 上面两个函数如果你有其他需要存取数据的功能，也可以直接使用
-
-// 读取背景
-try {
-  let data = loadData('blogbg', 1440)
-  if (data) changeBg(data, 1)
-  else localStorage.removeItem('blogbg');
-} catch (error) { localStorage.removeItem('blogbg'); }
-
-// 切换背景函数
-// 此处的flag是为了每次读取时都重新存储一次,导致过期时间不稳定
-// 如果flag为0则存储,即设置背景. 为1则不存储,即每次加载自动读取背景.
-function changeBg(s, flag) {
-  let bg = document.getElementById('web_bg')
-  if (s.charAt(0) == '#') {
-      bg.style.backgroundColor = s
-      bg.style.backgroundImage = 'none'
-  } else bg.style.backgroundImage = s
-  if (!flag) { saveData('blogbg', s) }
-}
-
-// 以下为2.0新增内容
-
-// 创建窗口
-var winbox = ''
-
-function createWinbox() {
-  let div = document.createElement('div')
-  document.body.appendChild(div)
-  winbox = WinBox({
-      id: 'changeBgBox',
-      index: 999,
-      title: "切换背景",
-      x: "center",
-      y: "center",
-      minwidth: '300px',
-      height: "60%",
-      background: '#49b1f5',
-      onmaximize: () => { div.innerHTML = `<style>body::-webkit-scrollbar {display: none;}div#changeBgBox {width: 100% !important;}</style>` },
-      onrestore: () => { div.innerHTML = '' }
-  });
-  winResize();
-  window.addEventListener('resize', winResize)
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
