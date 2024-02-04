@@ -339,6 +339,24 @@ function showData() {
     <iframe id="timeuprobot" src="https://status.beerlee.cn"><div class="comments-load" id="iframeload"></div></iframe>
     
     <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/K3svWvEINq7CIBTm/quote.js?theme=#5DADE2,#333333,#4E4E4E,#333333,#FFFFFF,#1690FF,15&col=true&f=14&badge=icon_0&icon=center&display=1,0,1,1,0,1,1,1"></script>
+    
+    ### 访问统计
+<div id="statistic">
+<div class="content"></div>
+<span style="font-size:14px">流量统计支持：<a style="color:#1690ff;" href="https://v6.51.la/">51la</a></span>
+</div>
+
+<!-- js -->
+<script>
+// 链接替换即可，不需要后面的参数
+fetch('https://v6-widget.51.la/v6/JkxJmzzWDhbGjOFf/quote.js').then(res => res.text()).then((data) => {
+    let title = ['最近活跃访客', '今日人数', '今日访问', '昨日人数', '昨日访问', '本月访问', '总访问量']
+    let num = data.match(/(?<=<\/span><span>).*?(?=<\/span><\/p>)/g)
+    let order = [1, 3, 2, 4, 5] // 新增  可排序，如果需要隐藏则删除对应数字即可。
+    // 示例：[1, 3, 2, 4, 5] 显示 ['今日人数', '昨日人数', '今日访问', '昨日访问', '本月访问']，不显示 最近活跃访客(0) 和 总访问量(6)
+    for (let i = 0; i < order.length; i++) { document.querySelectorAll('#statistic .content')[0].innerHTML += '<div><span>' + title[order[i]] + '</span><span class="num">' + num[order[i]] + '</span></div>' }
+});
+</script>
 
 
     </div>`   
