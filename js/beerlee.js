@@ -414,18 +414,7 @@ function postAddToc () {
   document.addEventListener('pjax:complete', postAddToc);
 
 
-   //导航栏标题
-   if (GLOBAL_CONFIG_SITE.title.replace("Beerlee", "") === "") {
-    document.getElementById("page-title").style.display = "none";
-  } else {
-    document.querySelector("#page-title>span").innerHTML = document.title.split("| Beerlee")[0];
-  }
-  // 添加pjax-data标签属性
-  document.addEventListener('pjax:complete', pageTitle);
-  function pageTitle() {
-    var pageTitle = document.getElementById('page-title');
-    pageTitle.setAttribute('pjax-data', 'true');
-  }
+
 
 //快速添加友链
   var leonus = {

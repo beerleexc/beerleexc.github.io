@@ -8327,7 +8327,7 @@ a.article-title-new::after {
   content: '🖥️';
 }
 
-.category-lists .category-list li.category-list-item:nth-child(2) {
+.category-lists .category-list li.category-list-item:nth-child(3) {
   background: -webkit-linear-gradient(left, #ba52ed, #ff99fe);
   background: -moz-linear-gradient(left, #ba52ed, #ff99fe);
   background: -o-linear-gradient(left, #ba52ed, #ff99fe);
@@ -8335,35 +8335,12 @@ a.article-title-new::after {
   background: linear-gradient(to right, #ba52ed, #ff99fe);
 }
 
-.category-lists .category-list li.category-list-item:nth-child(2) a.category-list-link::before {
+.category-lists .category-list li.category-list-item:nth-child(3) a.category-list-link::before {
   content: '📚';
 }
 
-.category-lists .category-list li.category-list-item:nth-child(3) {
-  background: -webkit-linear-gradient(left, #6639a6, #3490de);
-  background: -moz-linear-gradient(left, #6639a6, #3490de);
-  background: -o-linear-gradient(left, #6639a6, #3490de);
-  background: -ms-linear-gradient(left, #6639a6, #3490de);
-  background: linear-gradient(to right, #6639a6, #3490de);
-}
 
-.category-lists .category-list li.category-list-item:nth-child(3) a.category-list-link::before {
-  content: '💬';
-}
-
-.category-lists .category-list li.category-list-item:nth-child(4) {
-  background: -webkit-linear-gradient(right, #38ef7d, #11998e);
-  background: -moz-linear-gradient(right, #38ef7d, #11998e);
-  background: -o-linear-gradient(right, #38ef7d, #11998e);
-  background: -ms-linear-gradient(right, #38ef7d, #11998e);
-  background: linear-gradient(to left, #38ef7d, #11998e);
-}
-
-.category-lists .category-list li.category-list-item:nth-child(4) a.category-list-link::before {
-  content: '🌐';
-}
-
-.category-lists .category-list li.category-list-item:nth-child(5) {
+.category-lists .category-list li.category-list-item:nth-child(2) {
   background: -webkit-linear-gradient(left, #b91d73, #f953c6);
   background: -moz-linear-gradient(left, #b91d73, #f953c6);
   background: -o-linear-gradient(left, #b91d73, #f953c6);
@@ -8371,11 +8348,11 @@ a.article-title-new::after {
   background: linear-gradient(to right, #b91d73, #f953c6);
 }
 
-.category-lists .category-list li.category-list-item:nth-child(5) a.category-list-link::before {
+.category-lists .category-list li.category-list-item:nth-child(2) a.category-list-link::before {
   content: '📝';
 }
 
-.category-lists .category-list li.category-list-item:nth-child(6) {
+.category-lists .category-list li.category-list-item:nth-child(4) {
   background: -webkit-linear-gradient(left, #f12711, #f5af19);
   background: -moz-linear-gradient(left, #f12711, #f5af19);
   background: -o-linear-gradient(left, #f12711, #f5af19);
@@ -8383,10 +8360,33 @@ a.article-title-new::after {
   background: linear-gradient(to right, #f12711, #f5af19);
 }
 
-.category-lists .category-list li.category-list-item:nth-child(6) a.category-list-link::before {
+.category-lists .category-list li.category-list-item:nth-child(4) a.category-list-link::before {
   content: '🎨';
 }
 
+.category-lists .category-list li.category-list-item:nth-child(6) {
+  background: -webkit-linear-gradient(left, #6639a6, #3490de);
+  background: -moz-linear-gradient(left, #6639a6, #3490de);
+  background: -o-linear-gradient(left, #6639a6, #3490de);
+  background: -ms-linear-gradient(left, #6639a6, #3490de);
+  background: linear-gradient(to right, #6639a6, #3490de);
+}
+
+.category-lists .category-list li.category-list-item:nth-child(6) a.category-list-link::before {
+  content: '💬';
+}
+
+.category-lists .category-list li.category-list-item:nth-child(5) {
+  background: -webkit-linear-gradient(right, #38ef7d, #11998e);
+  background: -moz-linear-gradient(right, #38ef7d, #11998e);
+  background: -o-linear-gradient(right, #38ef7d, #11998e);
+  background: -ms-linear-gradient(right, #38ef7d, #11998e);
+  background: linear-gradient(to left, #38ef7d, #11998e);
+}
+
+.category-lists .category-list li.category-list-item:nth-child(5) a.category-list-link::before {
+  content: '🌐';
+}
   
 :root {
     --default-cursor: url(https://npm.elemecdn.com/eurkon-cdn/hexo/images/user/default.cur);
@@ -10989,7 +10989,6 @@ div.menus_items>div:nth-child(4)>ul {
 #pagination {
     flex: auto;
     width: 100%;
-    width: 100%;
   }
   
   #pagination .page-number {
@@ -11031,6 +11030,38 @@ div.menus_items>div:nth-child(4)>ul {
   }
 
 
+
+  
+  
+  #pagination a.extend,
+  #pagination .page-number,
+  #pagination span {
+    color: var(--font-color);
+    border-radius: var(--border-radius);
+    height: 2rem;
+    width: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    border: var(--card-border);
+    -webkit-box-shadow: var(--box-shadow);
+    -moz-box-shadow: var(--box-shadow);
+    -ms-box-shadow: var(--box-shadow);
+    -o-box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow);
+  }
+  
+  #pagination a.page-number:hover,
+  #pagination a.extend:hover {
+
+    background: var(--main);
+    -webkit-box-shadow: var(--main-shadow);
+    -moz-box-shadow: var(--main-shadow);
+    -ms-box-shadow: var(--main-shadow);
+    -o-box-shadow: var(--main-shadow);
+    box-shadow: var(--main-shadow);
+    border-color: var(--main);
+  }
+ 
 
   /* 上下一篇文章 */
   #pagination.pagination-post {
