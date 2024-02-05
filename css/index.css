@@ -11774,12 +11774,13 @@ a {
 
 #article-container p a:not([data-fancybox="gallery"]):not(.headerlink):not(.ghcard):not(.article-sort-item-title),
 #article-container li a:not([data-fancybox="gallery"]):not(.headerlink):not(.ghcard):not(.article-sort-item-title),
-#article-container blockquote a:not([data-fancybox="gallery"]):not(.headerlink):not(.ghcard):not(.article-sort-item-title) {
-  font-weight: 500;
-  border-bottom: solid 2px var(--main);
-  color: var(--text-highlight-color) !important;
+#article-container blockquote a:not([data-fancybox="gallery"]):not(.headerlink):not(.ghcard):not(.article-sort-item-title){
+  font-weight: bold;
+  border-bottom: solid 3px var(--main);
+  color: rgba(182, 2, 2, 0.9) !important;
   padding: 0 .2em;
 }
+
 
 #article-container p a:not([data-fancybox="gallery"]):not(.headerlink):not(.ghcard):not(.article-sort-item-title):hover,
 #article-container li a:not([data-fancybox="gallery"]):not(.headerlink):not(.ghcard):not(.article-sort-item-title):hover,
@@ -11793,6 +11794,11 @@ a {
   box-shadow: var(--main-shadow);
   border-radius: calc(var(--border-radius) / 2);
 }
+
+
+
+
+
 
 /*鼠标样式*/
 body {
