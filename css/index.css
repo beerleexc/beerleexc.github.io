@@ -7641,6 +7641,7 @@ psw:hover {
     -ms-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
+    background: var(--lee-gobal);
   }
   
   .article-sort-item.year {
@@ -8155,7 +8156,7 @@ a.article-title-new::after {
     border: var(--style-border); 
     border-radius: var(--border-radius);
     color: var(--font-color)!important;
-    background: var(--lee-gobal)!important;
+    background: transparent !important;
   }
 
 /* 分类目录条、标签目录条 */
@@ -8426,15 +8427,15 @@ a.article-title-new::after {
     --lee-fontcolor: #363636;
     --lee-maskbg: rgba(255, 255, 255, 0.6);
     --lee-banner: rgba(232, 232, 232, 0.596);
-    --lee-gobal: #ffffff3f;
+    --lee-gobal: #ffffff7a;
     --lee-card-border: #434242;
     }
     [data-theme="dark"] {
     --lee-fontcolor: #f7f7fa;
     --lee-maskbg: rgba(13, 13, 13, 0.563);
     --lee-banner: rgb(36, 33, 38);
-    --lee-gobal: rgba(8, 8, 8, 0.626);
-    --lee-card-border: #414551;
+    --lee-gobal: #0a0b0b51;
+    --lee-card-border:#e0e3ed;
     }
     
 
@@ -8442,11 +8443,13 @@ a.article-title-new::after {
    
     
    
+
+ 
     
   
 :root {
-	--console-bg: rgba(243, 243, 243, 0.692);
-	--console-normal:rgba(255, 255, 255, 0.959);
+	--console-bg: rgba(241, 241, 241, 0.966);
+	--console-normal:rgb(255, 255, 255);
 	--console-hover: #1677B3;
 }
 
@@ -8460,6 +8463,7 @@ a.article-title-new::after {
 }
 
 /* 控制台 */
+
 
 
 #console {
@@ -8670,15 +8674,6 @@ a.article-title-new::after {
 	color:grey;
 }
 
-@Keyframes comments-load-spin {
-   0% {
-     transform: rotate(0deg);
-   }
- 
-   100% {
-     transform: rotate(360deg);
-   }
-}
 
 .comments-load {
 	display: inline-block;
@@ -8941,6 +8936,7 @@ input:checked + .slider:before {
 #data-content{
 	width:100%;
 	height:100%;
+	font-weight:bold;
 }
 
 #data-content iframe{
@@ -8950,10 +8946,11 @@ input:checked + .slider:before {
 }
 
 #data-51la{
-	width:50%;
-	border-radius:15px;
-	background:var(--console-normal);
+	width:100%;
+	border-radius:5px;
+	background:white;
 	padding:8px 15px;
+	color: rgba(10, 10, 10, 0.873)
 }
 
 .data-meta{
@@ -8962,16 +8959,14 @@ input:checked + .slider:before {
 
 .num-51la{
 	float:right;
+    color: rgba(16, 16, 16, 0.877)
 }
 
-@media screen and (max-width:768px) {
 
-	#consoleButton{
-		width:40px;
-		height: 40px;
-		font-size: 15px;
-		line-height: 24px;
-	}
+
+
+
+@media screen and (max-width:768px) {
 
 	#console-content{
 		overflow:hidden auto;
@@ -9367,12 +9362,16 @@ body.read-mode .layout>div:first-child {
  /*主题透明设置 */
  [data-theme] #recent-posts > .recent-post-item,
  [data-theme] #aside-content .card-widget,
- [data-theme] div#post,
+ [data-theme] div#page,
  [data-theme] div#archive,
- [data-theme] div#page {
-   background: var(--lee-gobal) !important;
+ [data-theme] div#post {
+   background: var(--lee-gobal);
  }
   
+
+
+
+
   /* 自定义  给每一个widget，加上边框 */
   #recent-posts>.recent-post-item, #aside-content .card-widget, .layout > div:first-child:not(.recent-posts){
     border-radius: 12px;
@@ -9493,6 +9492,11 @@ body.read-mode .layout>div:first-child {
     transition: 0.3s;
 }
 
+#essay-page {
+    background-color: transparent !important;
+  }
+
+
 #bber .timeline #waterfall.show {
     opacity: 1;
 }
@@ -9500,7 +9504,7 @@ body.read-mode .layout>div:first-child {
 #bber .timeline ul li.item {
     position: relative;
     width: calc(33.33% - 1.3333rem);
-    border: var(--style-border-always);
+    border: var(--style-border);
     border-radius: 12px;
     padding: 1rem;
     padding-bottom: 0.5rem;
@@ -9513,15 +9517,10 @@ body.read-mode .layout>div:first-child {
     background: transparent;
     box-shadow: var(--lee-shadow-border);
     margin-right: 1rem;
+    background: var(--lee-gobal);
 }
 
-#bber .timeline ul li.item hr {
-    display: flex;
-    position: relative;
-    margin: 8px 0;
-    border: 1px dashed var(--lee-theme-op);
-    width: 100%;
-}
+
 
 @media screen and (max-width: 768px) {
     #bber .timeline ul li.item {
@@ -9530,7 +9529,7 @@ body.read-mode .layout>div:first-child {
 }
 
 #bber .timeline ul li.item:hover {
-    border: var(--style-border-hover);
+    background: var(--main);
 }
 
 #bber ul.list {
@@ -9574,6 +9573,16 @@ body.read-mode .layout>div:first-child {
     justify-content: space-between;
 }
 
+
+
+
+
+
+
+
+
+
+
 /* 标题 */
 .bb-info {
     display: inline;
@@ -9586,13 +9595,21 @@ body.read-mode .layout>div:first-child {
 }
 
 .bb-info:hover {
-    color: var(--lee-hovertext);
+    color: var(--mian);
 }
 
 #bber {
     margin-top: 1rem;
     width: 100%;
 }
+
+
+
+
+
+
+
+
 
 /* 每条动态 */
 #bber div.bber-content {
@@ -9630,7 +9647,7 @@ body.read-mode .layout>div:first-child {
 }
 
 #bber .bber-content-link:hover {
-    background-color: var(--lee-main);
+    background-color: var(--main);
     color: var(--lee-white);
 }
 
@@ -9661,6 +9678,20 @@ body.read-mode .layout>div:first-child {
 #bber .datafrom i {
     margin-right: 4px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* 音乐 */
 #bber .bber-music {
@@ -9823,7 +9854,7 @@ body.read-mode .layout>div:first-child {
     margin: .5rem .25rem;
     border-radius: var(--border-radius);
     border: var(--card-border);
-    background-color: var(--lee-card-bg);
+    background: var(--lee-gobal);
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     -ms-transition: all .5s ease;
@@ -10297,7 +10328,7 @@ img.footer_mini_logo {
     clear: both;
     padding: 10px 0;
     border-bottom: 1px #ddd solid;
-    background: transparent;
+    background: var(--lee-gobal);;
     border: var(--style-border);
     box-shadow: var(--lee-shadow-border);
     border-radius: 12px;
@@ -10594,7 +10625,7 @@ i.bber-gotobb {
 #nav .menus_items .menus_item .menus_item_child {
   margin-top: .6em;
   padding: .4em .5em;
-  background: var(--card-bg);
+  background: var(--lee-gobal);
   border-radius: var(--border-radius);
   border: var(--card-border);
   -webkit-box-shadow: var(--box-shadow);
@@ -10991,8 +11022,21 @@ div.menus_items>div:nth-child(4)>ul {
     width: 100%;
   }
   
-  #pagination .page-number {
+  #pagination a.extend,
+  #pagination .page-number,
+  #pagination span {
     color: var(--font-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    -webkit-box-shadow: var(--box-shadow);
+    -moz-box-shadow: var(--box-shadow);
+    -ms-box-shadow: var(--box-shadow);
+    -o-box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow);
+    border: var(--style-border);
+    height: 2.2rem;
+    width: 2.2rem;
+    line-height: 2rem;
   }
 
   #pagination .page-number.current {
@@ -11000,17 +11044,28 @@ div.menus_items>div:nth-child(4)>ul {
     background: var(--theme-color);
   }
   
+  /* 跳页 */
   #textbtn {
     font-weight: bold;
     color: var(--font-color);
+    border: var(--style-border);
   }
 
+/* 数字输入按钮 */
   .pagination input {
-    border: var(--card-border);
+    border: var(--style-border);
     outline-style: none;
     text-align:center;
+    border-radius: var(--border-radius);
+    color: var(--text-highlight-color);
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+
   }
-  
+  /* 前后翻页 */
   #pagination a.extend.prev {
     width: 4.5rem;
     float: left;
@@ -11030,29 +11085,11 @@ div.menus_items>div:nth-child(4)>ul {
   }
 
 
-
-  
-  
-  #pagination a.extend,
-  #pagination .page-number,
-  #pagination span {
-    color: var(--font-color);
-    border-radius: var(--border-radius);
-    height: 2rem;
-    width: 2rem;
-    text-align: center;
-    line-height: 2rem;
-    border: var(--card-border);
-    -webkit-box-shadow: var(--box-shadow);
-    -moz-box-shadow: var(--box-shadow);
-    -ms-box-shadow: var(--box-shadow);
-    -o-box-shadow: var(--box-shadow);
-    box-shadow: var(--box-shadow);
-  }
-  
+/* 鼠标悬浮按钮颜色 */
+  #textbtn:hover,
+  #pagination input:hover, 
   #pagination a.page-number:hover,
   #pagination a.extend:hover {
-
     background: var(--main);
     -webkit-box-shadow: var(--main-shadow);
     -moz-box-shadow: var(--main-shadow);
@@ -11062,6 +11099,35 @@ div.menus_items>div:nth-child(4)>ul {
     border-color: var(--main);
   }
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   /* 上下一篇文章 */
   #pagination.pagination-post {
@@ -11799,7 +11865,7 @@ div#swiper_container {
 
 
 /* a标签/锚点链接图标*/
-a {
+a {color: #0498f4;
   text-decoration: none !important;
 }
 
@@ -11825,7 +11891,6 @@ a {
   box-shadow: var(--main-shadow);
   border-radius: calc(var(--border-radius) / 2);
 }
-
 
 
 

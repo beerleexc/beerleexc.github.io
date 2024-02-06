@@ -10,6 +10,23 @@ PCimg = [ //标准壁纸
     './img/Bg/B03.png',
     './img/Bg/B04.png',
 
+    'https://cdn.ichika.cc/WallPaper/102875400_p0.png',
+    'https://cdn.ichika.cc/typora/202210141544062.png',
+    'https://cdn.ichika.cc/typora/202210141513175.png',
+    'https://cdn.ichika.cc/typora/202210141535511.png',
+    'https://cdn.ichika.cc/typora/archivecover.png',
+    'https://cdn.ichika.cc/typora/categorycover.png',
+    'https://cdn.ichika.cc/typora/tagcover.png',
+    'https://cdn.ichika.cc/typora/202210141549031.png',
+    'https://cdn.ichika.cc/typora/202210141549269.png',
+    'https://cdn.ichika.cc/typora/202210181614358.png',
+    'https://cdn.ichika.cc/typora/202210141549975.png',
+    'https://cdn.ichika.cc/typora/202210141535193.jpg',
+    'https://cdn.ichika.cc/typora/202210141536098.png',
+    'https://cdn.ichika.cc/typora/202210141545495.jpg',
+    'https://cdn.ichika.cc/typora/202210141538929.jpg',
+    'https://cdn.ichika.cc/WallPaper/illust_101965789_20221019_154953.png',
+    'https://cdn.ichika.cc/WallPaper/sekaiichika1.png'
 ]
 Moblieimg = [ //手机壁纸
     'https://cdn.ichika.cc/WallPaper/102185774_p0.jpg',
@@ -40,20 +57,6 @@ Moblieimg = [ //手机壁纸
     'https://cdn.ichika.cc/WallPaper/illust_99486664_20221019_154914.jpg',
     'https://cdn.ichika.cc/WallPaper/illust_99684687_20221019_154620.png'
 ]
-
-
-
-
-
-
-
-ichikaBlur = 'blur(10px)';
-ichikaNoBlur = 'blur(0px)';
-ichikaCardBgDark = 'rgba(0,0,0,0.7)';
-ichikaBlurBg = 'rgba(255,255,255,0.88)';
-ichikaNoBlurBg = 'rgba(255,255,255,0.95)';
-
-
 
 // 存数据
 function saveData(name, data) {
@@ -116,60 +119,9 @@ function changeBg (s, flag) {
     }
 }
 
-//控制台函数
-//桌面端按钮拖动
-var consoleButton = document.getElementById("consoleButton");
-var isDrag = false;
-consoleButton.onmousedown = function (mousePos) {
-    var btnPosX = consoleButton.style.right;
-    var btnPosY = consoleButton.style.bottom;
-    let startTime = new Date();
-    document.onmousemove = function (evt) {
-        let nowTime = new Date();
-        if (nowTime - startTime > 100) {
-            isDrag = true;
-            var resultX = parseFloat(btnPosX) - (evt.clientX - mousePos.clientX);
-            var resultY = parseFloat(btnPosY) - (evt.clientY - mousePos.clientY);
-            resultX = (resultX > 0 && resultX < window.innerWidth - consoleButton.clientWidth) ? resultX : Math.max(0, Math.min(window.innerWidth - consoleButton.clientWidth, resultX));
-            resultY = (resultY > 0 && resultY < window.innerHeight - consoleButton.clientHeight) ? resultY : Math.max(0, Math.min(window.innerHeight - consoleButton.clientHeight, resultY));
-            consoleButton.style.right = resultX + 'px';
-            consoleButton.style.bottom = resultY + 'px';
-        }
-    }
-    document.onmouseup = function () {
-        document.onmousemove = null;
-    };
-};
-//移动端按钮拖动
-consoleButton.ontouchstart = function (a) {
-    var mousePos = a.targetTouches[0];
-    var btnPosX = consoleButton.style.right;
-    var btnPosY = consoleButton.style.bottom;
-    let startTime = new Date();
-    consoleButton.ontouchmove = function (e) {
-        e.preventDefault()
-        let nowTime = new Date();
-        if (nowTime - startTime > 100) {
-            var evt = e.targetTouches[0];
-            var resultX = parseFloat(btnPosX) - (evt.clientX - mousePos.clientX);
-            var resultY = parseFloat(btnPosY) - (evt.clientY - mousePos.clientY);
-            resultX = (resultX > 0 && resultX < window.innerWidth - consoleButton.clientWidth) ? resultX : Math.max(0, Math.min(window.innerWidth - consoleButton.clientWidth, resultX));
-            resultY = (resultY > 0 && resultY < window.innerHeight - consoleButton.clientHeight) ? resultY : Math.max(0, Math.min(window.innerHeight - consoleButton.clientHeight, resultY));
-            consoleButton.style.right = resultX + 'px';
-            consoleButton.style.bottom = resultY + 'px';
-            
-        }
-    }
-    document.ontouchend = function () {
-        document.ontouchmove = null;
-    };
-};
 
 function showConsole () {
-    if (isDrag) {
-        isDrag = false;
-        return;
-    }
+   
     let consolePanel = document.getElementById('console');
     let consblur = document.getElementById('console-blur')
     if (consolePanel.style.opacity == 0) {
@@ -257,16 +209,6 @@ function fullScreen() {
     else document.documentElement.requestFullscreen();
 }
 
-
-
-
-
-
-
-
-
-
-
 function showBgSetting () { //切换背景页面
     let result = `<div id="blog-setting">
     <span><button id="resetbg" onclick="localStorage.removeItem('blogbg');localStorage.removeItem('autoTheme');localStorage.removeItem('manualTheme');location.reload();"><i class="fa-solid fa-arrows-rotate"></i> 重置背景</button></span>
@@ -276,7 +218,7 @@ function showBgSetting () { //切换背景页面
     result += `</div><h2 id="桌面端"><a href="#桌面端" class="headerlink" title="桌面端"></a>桌面端</h2><div class="bgbox">`
 
     PCimg.forEach(function (img) {
-        result +=`<a href="javascript:;" rel="noopener external nofollow" style="background-image:url('./${img}'!cover)" class="imgbox" onclick="changeBg('url('./${img}')')"></a>`
+        result +=`<a href="javascript:;" rel="noopener external nofollow" style="background-image:url(${img}!cover)" class="imgbox" onclick="changeBg('url(${img})')"></a>`
     })
 
     result += `</div><h2 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h2><div class="bgbox">`
@@ -320,52 +262,152 @@ function showBgSetting () { //切换背景页面
 
 
 
+//按钮id
+var layoutOption = [
+    ['showWidget', '显示侧边栏', 1, '显示信息栏', 0],  //[关键词，桌面端名，桌面端默认值，移动端名，移动端默认值] 1：true 0：false -1：隐藏
+    ['singleRow', '首页单栏布局', 0, '', -1],
+    ['useSakura', '落樱特效', 1, '落樱特效', 0],
+    ['clickEffect', '单击特效', 1, '', -1]
+]
+isNavFixed = true
+//布局页
+function showLayoutSetting () {
+    if (window.innerWidth > 768) {
+        let a = `<div id="layout-content"><button id="resetLayout" onclick="resetLayout()"><i class="fa-solid fa-arrows-rotate"></i></button>
+        <div><ul>`
+        layoutOption.forEach((option) => {
+            if (option[2] != -1) a += `<li><span>${option[1]}</span><label class="switch"><input id="${option[0]}" onclick="layoutSwitch('${option[0]}',1)" type="checkbox" ${option[2] == 1 ? 'checked' : ''}><div class="slider round"></div></label></li>`
+        })
+        a += `</ul></div></div>`
+        document.getElementById('console-secmenu').innerHTML = a
+    }
+    else {
+        let a = `<div id="layout-content"><button id="resetLayout" onclick="resetLayout()"><i class="fa-solid fa-arrows-rotate"></i></button>
+        <div><ul>`
+        layoutOption.forEach((option) => {
+            if (option[4] != -1) a += `<li><span>${option[3]}</span><label class="switch"><input id="${option[0]}" onclick="layoutSwitch('${option[0]}',1)" type="checkbox" ${option[4] == 1 ? 'checked' : ''}><div class="slider round"></div></label></li>`
+        })
+        a += `</ul></div></div>`
+        document.getElementById('console-secmenu').innerHTML = a
+    }
 
+    //设置按钮初始状态
+    layoutOption.forEach(function (option) {
+        try {
+            if ((window.innerWidth > 768 && option[2] != -1) || (window.innerWidth <= 768 && option[4] != -1)) {
+                let data = loadData(option[0], 1440 * 30)
+                if (typeof (data) == "boolean") document.getElementById(option[0]).checked = data;
+                else localStorage.removeItem(option[0]);
+            }
+        } catch (error) { localStorage.removeItem(option[0]); console.log('error') }
+    })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    showSecMenu();
+} 
 
 //统计页51统计数据
+var lainfo = ''
 function showData() {
+    // 链接替换即可，不需要后面的参数
     document.getElementById('console-secmenu').innerHTML = `<div id="data-content"">
-   
     <iframe id="timeuprobot" src="https://status.beerlee.cn"><div class="comments-load" id="iframeload"></div></iframe>
-    
-    <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/K3svWvEINq7CIBTm/quote.js?theme=#5DADE2,#333333,#4E4E4E,#333333,#FFFFFF,#1690FF,15&col=true&f=14&badge=icon_0&icon=center&display=1,0,1,1,0,1,1,1"></script>
-    
-    ### 访问统计
-<div id="statistic">
-<div class="content"></div>
-<span style="font-size:14px">流量统计支持：<a style="color:#1690ff;" href="https://v6.51.la/">51la</a></span>
-</div>
+    <div class="data-meta"><div id="data-51la"><div class="comments-load"></div></div></div>
+    </div>`
 
-<!-- js -->
-<script>
-// 链接替换即可，不需要后面的参数
-fetch('https://v6-widget.51.la/v6/K3svWvEINq7CIBTm/quote.js').then(res => res.text()).then((data) => {
-    let title = ['最近活跃访客', '今日人数', '今日访问', '昨日人数', '昨日访问', '本月访问', '总访问量']
-    let num = data.match(/(?<=<\/span><span>).*?(?=<\/span><\/p>)/g)
-    let order = [1, 3, 2, 4, 5] // 新增  可排序，如果需要隐藏则删除对应数字即可。
-    // 示例：[1, 3, 2, 4, 5] 显示 ['今日人数', '昨日人数', '今日访问', '昨日访问', '本月访问']，不显示 最近活跃访客(0) 和 总访问量(6)
-    for (let i = 0; i < order.length; i++) { document.querySelectorAll('#statistic .content')[0].innerHTML += '<div><span>' + title[order[i]] + '</span><span class="num">' + num[order[i]] + '</span></div>' }
-});
-</script>
+    if (lainfo == '') {
+        fetch('https://v6-widget.51.la/v6/K3svWvEINq7CIBTm/quote.js').then(res => res.text()).then((data) => {
+            let title = ['最近活跃访客', '今日人数', '今日访问量', '昨日人数', '昨日访问量', '本月访问量', '总访问量']
+            let num = data.match(/(<\/span><span>).*?(\/span><\/p>)/g);
+            num = num.map(el => {
+                let val = el.replace(/(<\/span><span>)/g, "");
+                let str = val.replace(/(<\/span><\/p>)/g, "");
+                return str;
+              });
+            let order = [1, 2, 4, 5, 6] // 新增  可排序，如果需要隐藏则删除对应数字即可。
+            // 示例：[1, 3, 2, 4, 5] 显示 ['今日人数', '昨日人数', '今日访问', '昨日访问', '本月访问']，不显示 最近活跃访客(0) 和 总访问量(6)
+            for (let i = 0; i < order.length; i++)  lainfo += '<div><span>' + title[order[i]] + '</span><span class="num-51la">' + num[order[i]] + '</span></div>'
+            document.getElementById('data-51la').innerHTML = lainfo + `<div style="text-align:center">由<a target="_blank" rel="nofollow noopener noreferrer" href='https://www.51.la/'>51LA</a>提供数据支持</div>`
+        })
+    }
+    else document.getElementById('data-51la').innerHTML = lainfo + `<div style="text-align:center">由<a target="_blank" rel="nofollow noopener noreferrer" href='https://www.51.la/'>51LA</a>提供数据支持</div>`
 
-
-    </div>`   
     showSecMenu();
 }
 
+
+
+
+
+//恢复默认设置
+function resetLayout () {
+    layoutOption.forEach(option => {
+        if (window.innerWidth > 768) {
+            if (option[2] == 0) {
+                document.getElementById(option[0]).checked = false;
+                layoutSwitch(option[0], false);
+            }
+            else if (option[2] == 1) {
+                document.getElementById(option[0]).checked = true;
+                layoutSwitch(option[0], true)
+            }
+        }
+        else {
+            if (option[4] == 0) {
+                document.getElementById(option[0]).checked = false;
+                layoutSwitch(option[0], false);
+            }
+            else if (option[4] == 1) {
+                document.getElementById(option[0]).checked = true;
+                layoutSwitch(option[0], true)
+            }
+        }
+    })
+}
+
+//布局页各项设置
+function layoutSwitch(name, flag) {
+    let switchOn = (typeof (flag) == "boolean") ? flag : document.getElementById(name).checked;
+    switch (name) {
+        case 'showWidget':
+            if (switchOn) {
+                if (document.getElementById('aside-content'))document.getElementById('aside-content').classList.remove('show-widget-asidehide')
+                if (document.getElementById('post'))document.getElementById('post').classList.remove('show-widget-posts')
+                if (document.getElementById('recent-posts')) document.getElementById('recent-posts').classList.remove('show-widget-posts')
+                if (document.getElementsByClassName('post_cover')) Array.from(document.getElementsByClassName('post_cover')).forEach(function (item) { item.classList.remove('show-widget-postcard') })
+            }
+            else {
+                if (document.getElementById('aside-content')) document.getElementById('aside-content').classList.add('show-widget-asidehide')
+                if (document.getElementById('post')) document.getElementById('post').classList.add('show-widget-posts')
+                if (document.getElementById('recent-posts')) document.getElementById('recent-posts').classList.add('show-widget-posts')
+                if (document.getElementsByClassName('post_cover')) Array.from(document.getElementsByClassName('post_cover')).forEach(function (item) { item.classList.add('show-widget-postcard') })
+            }
+            break;
+        case 'singleRow':
+            if (switchOn && document.getElementsByClassName('recent-post-item')) {
+                Array.from(document.getElementsByClassName('recent-post-item')).forEach(function (item) { item.classList.add('single-row') })
+                if (typeof (flag) == "number" && document.getElementById('HDCover').checked) layoutSwitch('HDCover',true)
+            }
+            else if (!switchOn && document.getElementsByClassName('recent-post-item')) Array.from(document.getElementsByClassName('recent-post-item')).forEach(function (item) { item.classList.remove('single-row') })
+            break;
+        case 'useSakura':
+            stopp(switchOn)
+            break;
+        case 'clickEffect':
+            if (switchOn && document.getElementsByClassName('fireworks')[0]) document.getElementsByClassName('fireworks')[0].setAttribute('style', 'display:block')
+            else if (!switchOn && document.getElementsByClassName('fireworks')[0]) document.getElementsByClassName('fireworks')[0].setAttribute('style', 'display:none')
+            break;
+        default:
+            break;
+    }
+    saveData(name, switchOn)
+}
+
+//初始化布局设置
+layoutOption.forEach(function (option){
+    try {
+        let data = loadData(option[0], 1440 * 30)
+        if (typeof (data) == "boolean") layoutSwitch(option[0], data)
+        else localStorage.removeItem(option)[0];
+    } catch (error) { localStorage.removeItem(option[0])}
+})
 
