@@ -267,7 +267,7 @@ var layoutOption = [
     ['showWidget', '显示侧边栏', 1, '显示信息栏', 0],  //[关键词，桌面端名，桌面端默认值，移动端名，移动端默认值] 1：true 0：false -1：隐藏
     ['singleRow', '首页单栏布局', 0, '', -1],
     ['useSakura', '落樱特效', 1, '落樱特效', 0],
-    ['clickEffect', '单击特效', 1, '', -1]
+
 ]
 isNavFixed = true
 //布局页
@@ -391,12 +391,6 @@ function layoutSwitch(name, flag) {
             break;
         case 'useSakura':
             stopp(switchOn)
-            break;
-        case 'clickEffect':
-            if (switchOn && document.getElementsByClassName('fireworks')[0]) document.getElementsByClassName('fireworks')[0].setAttribute('style', 'display:block')
-            else if (!switchOn && document.getElementsByClassName('fireworks')[0]) document.getElementsByClassName('fireworks')[0].setAttribute('style', 'display:none')
-            break;
-        default:
             break;
     }
     saveData(name, switchOn)
