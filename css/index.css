@@ -7504,7 +7504,7 @@ psw:hover {
   margin: 0 1rem;
   height: 18rem;
   border-radius: 8px;
-  background: var(--card-bg);
+  background: var(--lee-gobal);
   box-shadow: var(--card-box-shadow);
   transition: all 0.3s;
 }
@@ -7580,7 +7580,7 @@ psw:hover {
   overflow: hidden;
   width: 230px;
   height: 143px;
-  background: var(--anzhiyu-card-bg);
+  background: var(--lee-gobal);
   display: flex;
 }
 
@@ -8339,13 +8339,10 @@ color: #feb201;
     padding: .4rem .8rem;
     border-radius: var(--border-radius);
     display: flex;
-    border: var(--card-border);
+    border: var(--style-border);
     margin-bottom: 1rem;
     justify-content: space-between;
-  }
-  
-  #catalog-bar:hover {
-    border-color: var(--main);
+    background:var(--lee-maskbg) ;
   }
   
   #catalog-bar i {
@@ -8619,9 +8616,9 @@ color: #feb201;
     }
     [data-theme="dark"] {
     --lee-fontcolor: #f7f7fa;
-    --lee-maskbg: rgba(22, 22, 22, 0.277);
+    --lee-maskbg: rgba(22, 22, 22, 0.625);
     --lee-banner: rgb(36, 33, 38);
-    --lee-gobal: #17171750;
+    --lee-gobal: #171717a4;
     --lee-card-border:#b8bac18d;
     }
     
@@ -9508,7 +9505,6 @@ body {
   #post,
   #page,
   #archive,
-  #tag,
   #category {
     padding: 20px;
     border-radius: 0 !important;
@@ -9602,7 +9598,10 @@ body.read-mode .layout>div:first-child {
 
 
 
-
+  .layout > div:first-child:not(.recent-posts){
+    border-radius: 8px;
+    background: var(--lee-gobal) !important ;
+  }
 
 
 /* bb哔哔 */
