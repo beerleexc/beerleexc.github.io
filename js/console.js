@@ -1,32 +1,10 @@
 
 PCimg = [ //标准壁纸
-
-'https://cdn.ichika.cc/WallPaper/102185774_p0.jpg',
-'https://cdn.ichika.cc/WallPaper/102897176_p0.jpg',
-'https://cdn.ichika.cc/WallPaper/103399572_p0.png',
-'https://cdn.ichika.cc/WallPaper/104001022_p0.jpg',
-    './img/Bg/B02.png',
-    './img/Bg/B05.png',
-    './img/Bg/B03.png',
-    './img/Bg/B04.png',
-
-    'https://cdn.ichika.cc/WallPaper/102875400_p0.png',
-    'https://cdn.ichika.cc/typora/202210141544062.png',
-    'https://cdn.ichika.cc/typora/202210141513175.png',
-    'https://cdn.ichika.cc/typora/202210141535511.png',
-    'https://cdn.ichika.cc/typora/archivecover.png',
-    'https://cdn.ichika.cc/typora/categorycover.png',
-    'https://cdn.ichika.cc/typora/tagcover.png',
-    'https://cdn.ichika.cc/typora/202210141549031.png',
-    'https://cdn.ichika.cc/typora/202210141549269.png',
-    'https://cdn.ichika.cc/typora/202210181614358.png',
-    'https://cdn.ichika.cc/typora/202210141549975.png',
-    'https://cdn.ichika.cc/typora/202210141535193.jpg',
-    'https://cdn.ichika.cc/typora/202210141536098.png',
-    'https://cdn.ichika.cc/typora/202210141545495.jpg',
-    'https://cdn.ichika.cc/typora/202210141538929.jpg',
-    'https://cdn.ichika.cc/WallPaper/illust_101965789_20221019_154953.png',
-    'https://cdn.ichika.cc/WallPaper/sekaiichika1.png'
+'https://cdn.beerlee.cn/wallpaper/B01.png',
+'https://cdn.beerlee.cn/wallpaper/B02.png',
+'https://cdn.beerlee.cn/wallpaper/B03.png',
+'https://cdn.beerlee.cn/wallpaper/B04.png',
+'https://cdn.beerlee.cn/wallpaper/B05.png',
 ]
 Moblieimg = [ //手机壁纸
     'https://cdn.ichika.cc/WallPaper/102185774_p0.jpg',
@@ -211,20 +189,20 @@ function fullScreen() {
 
 function showBgSetting () { //切换背景页面
     let result = `<div id="blog-setting">
-    <span><button id="resetbg" onclick="localStorage.removeItem('blogbg');localStorage.removeItem('autoTheme');localStorage.removeItem('manualTheme');location.reload();"><i class="fa-solid fa-arrows-rotate"></i> 重置背景</button></span>
+    <span><button id="resetbg" onclick="localStorage.removeItem('blogbg');localStorage.removeItem('autoTheme');localStorage.removeItem('manualTheme');location.reload();">   <i class="fa-solid fa-arrows-rotate" title="重置背景"></i>  </button></span>
     
     <div class="bgbox"><a href="javascript:;" </a>`
 
     result += `</div><h2 id="桌面端"><a href="#桌面端" class="headerlink" title="桌面端"></a>桌面端</h2><div class="bgbox">`
 
     PCimg.forEach(function (img) {
-        result +=`<a href="javascript:;" rel="noopener external nofollow" style="background-image:url(${img}!cover)" class="imgbox" onclick="changeBg('url(${img})')"></a>`
+        result +=`<a href="javascript:;" rel="noopener external nofollow" style="background-image:url(${img})" class="imgbox" onclick="changeBg('url(${img})')"></a>`
     })
 
     result += `</div><h2 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h2><div class="bgbox">`
 
     Moblieimg.forEach(function (img) {
-        result += `<a href="javascript:;" rel="noopener external nofollow" style="background-image:url(${img}!cover)" class="pimgbox" onclick="changeBg('url(${img})')"></a>`
+        result += `<a href="javascript:;" rel="noopener external nofollow" style="background-image:url(${img})" class="pimgbox" onclick="changeBg('url(${img})')"></a>`
     })
 
     document.getElementById('console-secmenu').innerHTML = result + `</div>
@@ -404,4 +382,5 @@ layoutOption.forEach(function (option){
         else localStorage.removeItem(option)[0];
     } catch (error) { localStorage.removeItem(option[0])}
 })
+
 
